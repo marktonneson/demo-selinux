@@ -13,12 +13,12 @@
 'yum install setroubleshoot-server' -- this package will help make the logfiles easier to interpret and give suggestions to solve any SELinux errors
 
 * Tools and more
-# sestatus -- shows overall SELinux status
-# setenforce -- quickly toggles the runtime mode between Permissive and Enforcing
-# getenforce -- shows current runtime mode (can be used in scripts to determine current mode)
-/etc/sysconfig/selinux -- file that sets boot time status and mode
-# getsebool -- view SELinux booleans, use (-a) to view all booleans
-# setsebool -- used to toggle the boolean value
+```# sestatus``` -- shows overall SELinux status
+```# setenforce``` -- quickly toggles the runtime mode between Permissive and Enforcing
+```# getenforce``` -- shows current runtime mode (can be used in scripts to determine current mode)
+```/etc/sysconfig/selinux``` -- file that sets boot time status and mode
+```# getsebool``` -- view SELinux booleans, use (-a) to view all booleans
+```# setsebool``` -- used to toggle the boolean value
 
 * Viewing SELinux labels
   * Files and dirs: # ls -lZ
