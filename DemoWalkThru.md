@@ -9,11 +9,11 @@
   * Will need root or sudo to install packages
 
 * The setup script creates three web pages for this demo:
-  * The Control Page which is just links to the other two pages.  It is at the root of your web server (e.g. http://testsystem/index.html)
+  * The Control Page which is just links to the other two pages.  It is at the root of your web server (e.g. http://test-system/index.html)
   * The Booleans page will demonstrate the manipulation of SELinux boolean values
   * The Labeling page will demonstrate the editing of SELinux labels
 
-* SELinux Booleans
+SELinux Booleans
   * Access the Booleans page, it should present and error and generate a SELinux event
   * Investigate the SELinux event:
 ```
@@ -25,7 +25,7 @@
 ```
   * Access the Booleans page again and it should load successfully
 
-* SELinux Labels
+SELinux Labels
   * Access the Labels page, it should present an error and generate a SELinux event
   * Investigate the SELinux event:
   ```
