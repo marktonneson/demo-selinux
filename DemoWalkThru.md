@@ -1,41 +1,38 @@
 ## SELinux Demo WalkThru
 
 ### Requirements
-* Minimum VM: 1vCPU x 1G mem, running RHEL 7.latest
+* Minimum VM: 1vCPU x 1G mem, running RHEL 7.latest or RHEL 8.latest
 
 ### WalkThru
 * Setup via selinux-setup.sh
   * Installs & starts Apache, installs setroubleshoot-server
-  * Creates several test web pages
   * Will need root or sudo to install packages
 
-* What to install -- SELinux is built into the RHEL kernel, so there is nothing to install for SELinux itself.  However there are tools and configuration to help with SELinux management.
-'yum install setroubleshoot-server' -- this package will help make the logfiles easier to interpret and give suggestions to solve any SELinux errors
+* The setup script creates three web pages for this demo:
+  * The Control Page which is just links to the other two pages.  It is at the root of your web server (e.g. http://testsystem/index.html)
+  * The Booleans page will demonstrate the manipulation of SELinux boolean values
+  * The Labeling page will demonstrate the editing of SELinux labels
 
-* Tools and more
-```# sestatus``` -- shows overall SELinux status
-```# setenforce``` -- quickly toggles the runtime mode between Permissive and Enforcing
-```# getenforce``` -- shows current runtime mode (can be used in scripts to determine current mode)
-```/etc/sysconfig/selinux``` -- file that sets boot time status and mode
-```# getsebool``` -- view SELinux booleans, use (-a) to view all booleans
-```# setsebool``` -- used to toggle the boolean value
+* SELinux Booleans
+  * Access the Booleans page, it should present and error and generate a SELinux event
+  * Investigate the SELinux event:
+```
+# sealert -a /var/log/audit/audit.log
+```
+  * It should provide this command to run to resolve the SELinux boolean issue:
+```
+# setsebool -P httpd_read_user_content 1
+```
+  * Access the Booleans page again and it should load successfully
 
-* Viewing SELinux labels
-  * Files and dirs: # ls -lZ
-  * Processes: # ps auxZ
-  * Open Ports: lsof -i -Z
-
-* Troubleshooting
-/var/log/audit/audit.log -- where SELinux logs any violations, however it is not very user friendly
-# sealert -a /var/log/audit/audit.log -- command part of setroubleshoot-server package that will analyze audit.log and make user friendly suggestions for resolution
-
-* Changing SELinux labels -- most common SELinux issues can be resolved by toggling booleans (via setsebool).  The other option is to edit SELinux labels
-  * Files and dirs
-```
-# semanage fcontext -a -t {file_label} '/path/to/use(/.*)?'
-# restorecon -Rv /path/to/use
-```
-  * Ports
-```
-# semanage port -a -t {port_label} -p tcp|udp {port_num}
-```
+* SELinux Labels
+  * Access the Labels page, it should present an error and generate a SELinux event
+  * Investigate the SELinux event:
+  ```
+  # sealert -a /var/log/audit/audit.log
+  ```
+  * It should provide this command to run to resolve the SELinux labeling issue:
+  ```
+  # /sbin/restorecon -v /var/www/html/shadow.html
+  ```
+  * Access the Labels page again and it should load successfully
