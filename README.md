@@ -37,5 +37,6 @@ Changing SELinux labels -- most common SELinux issues can be resolved by togglin
 ```
 
 ### References and Resources
-* [SELinux User's and Administrator's Guide](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/selinux_users_and_administrators_guide/index)
+* [Red Hat Documentation - RHEL 7](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/selinux_users_and_administrators_guide/index)
 * [Red Hat Documentation - RHEL 8](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/using_selinux/)
+* [Red Hat Documentation - RHEL 9](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/using_selinux/index)
