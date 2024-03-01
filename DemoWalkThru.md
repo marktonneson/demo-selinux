@@ -1,7 +1,7 @@
 ## SELinux Demo WalkThru
 
 ### Requirements
-* Minimum VM: 1vCPU x 1G mem, running RHEL 7.latest or RHEL 8.latest
+* Minimum VM: 1vCPU x 1G mem, running RHEL 7.latest or RHEL 8.latest or RHEL 9.latest
 
 ### WalkThru
 * Setup via selinux-setup.sh
